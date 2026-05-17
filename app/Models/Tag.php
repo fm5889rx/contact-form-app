@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\Content;
+
+class Tag extends Model
+{
+    use HasFactory;
+
+    /**
+     * 複数代入可能な属性
+     */
+    protected $fillable = [
+        'name',
+    ];
+
+    /**
+     * このタグを使用する複数のコンテンツを取得
+     */
+    public function contents(): BelongsToMany
+    {
+        return $this->belongsToMany(Content::class);
+    }
+}
