@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('contacts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->onDeleteCascade();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->string('first_name', 255);
             $table->string('last_name', 255);
             $table->unsignedTinyInteger('gender');  // 1:男性、2:女性, 3:その他
