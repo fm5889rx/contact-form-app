@@ -50,6 +50,6 @@ class User extends Authenticatable
      */
     public function contents(): HasMany
     {
-        return $this->hasMany(content::class)
+        return $this->hasMany(content::class);
     }
 }
