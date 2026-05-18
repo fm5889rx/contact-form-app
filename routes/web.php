@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () { return view('welcome'); });
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
+});
+
+// 仮ルート、Issue #4以降で実装
+Route::middleware('auth')->group(function () {
+    Route::get('/contents', fn() => 'お問い合わせ一覧（準備中）')->name('contents.index');
+    Route::get('/categories', fn() => 'カテゴリー一覧（準備中）')->name('categories.index');
 });
