@@ -4,10 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ContactRequest extends FormRequest
+class StoreContactRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * リクエストの認可
      */
     public function authorize(): bool
     {
@@ -15,9 +15,7 @@ class ContactRequest extends FormRequest
     }
 
     /**
-     * コンテンツのバリデーションルール
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * お問い合わせフォームのバリデーションルール
      */
     public function rules(): array
     {
@@ -26,10 +24,10 @@ class ContactRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'gender' => 'required|integer|in:1,2,3',
-            'email' => 'required|string|email|max:255'
+            'email' => 'required|string|email|max:255',
             'tel' => 'required|string|regex:/^[0-9]{10,11}$/',
             'address' => 'required|string|max:255',
-            'building' => 'string|max:255',
+            'building' => 'nullable|string|max:255',
             'detail' => 'required|string|max:120',
         ];
     }
@@ -37,7 +35,8 @@ class ContactRequest extends FormRequest
     /**
      * バリデーションエラー時のメッセージ（日本語）
      */
-    public function massages() {
+    public function massages(): array
+    {
         return [
             'category_id.required' => 'カテゴリーを選択してください',
             'first_name.required' => '姓を入力してください',
@@ -46,9 +45,9 @@ class ContactRequest extends FormRequest
             'last_name.max' => '名は255文字以内で入力してください',
             'gender.required' => '性別を選択してください',
             'gender.in' => '性別を選択してください',
-            'email.required' => 'メールアドレスを入力してください'
-            'email.max' => 'メールアドレスは255文字以内で入力してください'
-            'email.email' => 'メールアドレスはメール形式で入力してください'
+            'email.required' => 'メールアドレスを入力してください',
+            'email.max' => 'メールアドレスは255文字以内で入力してください',
+            'email.email' => 'メールアドレスはメール形式で入力してください',
             'tel.required' => '電話番号を入力してください',
             'tel.regex' => '電話番号は数字で10〜11桁で入力してください',
             'address.required' => '住所を入力してください',

@@ -15,6 +15,7 @@ class Contact extends Model
      * 複数代入可能な属性
      */
     protected $fillable = [
+        'category_id',
         'first_name',
         'last_name',
         'gender',

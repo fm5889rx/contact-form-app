@@ -20,11 +20,11 @@ use App\Http\Controllers\ContactController;
 /**
  * ルーティング
  */
-Route::get('/', function () {
-    return redirect()->route('login');
-});
-
-// 認証が必要なルート
-Route::middleware('auth')->group(function () {
-    Route::resource('contacts', ContactController::class);
-});
+//Route::middleware('auth') function () {
+    Route::get('/', [ContactController::class, 'index']);
+    Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
+    Route::post('/contacts', [ContactController::class, 'thanks']);
+// Route::get('/admin', AdminController::class, 'index']);
+// Route::get('/admin/contscts/{conntact}', AdminController::class, 'show'])
+// Route::get('/admin/tags/{tag}/edit', [TagController::class, 'edit']);
+//};
