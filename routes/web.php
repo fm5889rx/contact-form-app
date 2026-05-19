@@ -12,14 +12,19 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+/**
+ * Controllerクラスの使用宣言
+ */
+use App\Http\Controllers\ContactController;
 
-// Route::get('/', function () { return view('welcome'); });
+/**
+ * ルーティング
+ */
 Route::get('/', function () {
     return redirect()->route('login');
 });
 
-// 仮ルート、Issue #4以降で実装
+// 認証が必要なルート
 Route::middleware('auth')->group(function () {
-    Route::get('/contents', fn() => 'お問い合わせ一覧（準備中）')->name('contents.index');
-    Route::get('/categories', fn() => 'カテゴリー一覧（準備中）')->name('categories.index');
+    Route::resource('contacts', ContactController::class);
 });
