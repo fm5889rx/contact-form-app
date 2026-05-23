@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\SUpport\Facades\Hash;
 
@@ -32,9 +33,14 @@ class AuthController extends Controller
     /**
      * 管理画面ログアウトの処理
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        return view('auth.login');      // ログイン画面を表示
+        // セッションを破棄してログアウト
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');     // ログイン画面に遷移
     }
 
     /**
