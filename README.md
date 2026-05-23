@@ -287,6 +287,11 @@ sail up -d
 sail artisan key:generate
 ```
 
+- データベースのマイグレーション
+```
+sail artisan migrate:fresh
+```
+
 ### Step5.Viteサーバ起動
 
 　新しいターミナルを開いて、開発サーバーを起動します。<br>
