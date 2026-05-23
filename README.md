@@ -345,5 +345,5 @@ sail artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 - 開発ツール：Docker 4.74.0、sail 8.5、phpMyAdmin 5.2.3
 
 ## 開発環境URL
-http://localhost： お問い合わせフォーム<br>
-http://localhost/admin： 管理画面<br>
+http://localhost         お問い合わせフォーム<br>
+http://localhost/admin   管理画面<br>
